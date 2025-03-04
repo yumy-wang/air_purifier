@@ -1,0 +1,53 @@
+{
+    // MQTT配置
+    "mqtt": {
+        "broker": "xxx",        // 代理地址
+        "port": 51883,                         // 代理端口
+        "username": "xxx",     // 用户名
+        "password": "xxx", // 密码
+        "device_mac": "xxx"                 // 设备MAC地址后六位，用于订阅和发布消息
+    },
+    "purifier": {
+        "ip": "192.168.123.84",                 // 设备IP地址
+        "token": "xxx", // 设备Token
+        "modes": {
+            "auto": 0,
+            "sleep": 3,
+            "favorite": 5,
+            "none": 6
+        },
+        // 需要从大到小配置，判断逻辑是按照大于当前值，然后执行对应动作
+        "air_quality_ranges": [
+            {
+                "co2_threshold": 1400,
+                "pm25_threshold": 30,
+                "action": "manual",
+                "speed": 2
+            },
+            {
+                "co2_threshold": 1100,
+                "pm25_threshold": 15,
+                "action": "manual",
+                "speed": 1
+            },
+            {
+                "co2_threshold": 700,
+                "pm25_threshold": 10,
+                "action": "favorite"
+            },
+            {
+                "co2_threshold": 500,
+                "pm25_threshold": 5,
+                "action": "sleep"
+            },
+            {
+                "co2_threshold": 0,
+                "pm25_threshold": 0,
+                "action": "off"
+            }
+        ]
+    },
+    "bark": {
+        "api_url": "xxx"  // 替换为你的Bark API URL
+    }
+}
